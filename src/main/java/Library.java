@@ -4,10 +4,13 @@ public class Library {
 
     private String name;
     private ArrayList<Book> inventory;
+    private int capacity;
 
-    public Library(String name){
+    public Library(String name, int capacity){
         this.name = name;
+        this.capacity = capacity;
         this.inventory = new ArrayList<Book>();
+
     }
 
     public String getName() {
@@ -19,6 +22,12 @@ public class Library {
     }
 
     public void addBook(Book batman) {
-        this.inventory.add(batman);
+        if (this.inventory.size() < this.capacity) {
+            this.inventory.add(batman);
+        }
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 }

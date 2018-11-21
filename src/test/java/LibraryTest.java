@@ -11,7 +11,7 @@ public class LibraryTest {
 
     @Before
     public void before(){
-        library = new Library("Morningside Library");
+        library = new Library("Morningside Library", 5);
         book = new Book("The Angel Experiment", "James Paterson", "Thriller");
         book2 = new Book("Casino Royale", "Anon.", "Thriller");
     }
@@ -29,7 +29,24 @@ public class LibraryTest {
     @Test
     public void canAddBook(){
         library.addBook(book);
-        assertEquals(1, library.countBooks());
+        library.addBook(book);
+        assertEquals(2, library.countBooks());
+    }
+
+    @Test
+    public void hasCapacity(){
+        assertEquals(5, library.getCapacity());
+    }
+
+    @Test
+    public void cannotAddBookWhenLibraryIsFull(){
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        assertEquals(5, library.countBooks());
     }
 
 
